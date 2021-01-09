@@ -1,0 +1,30 @@
+<div style="padding: 50px">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<div class="row">
+  <div class="col-sm">
+    <label>Input values</label>
+    <textarea id="values" rows="10" cols="20" formControlName="values"></textarea>
+    <p *ngIf="!form.controls.values.valid && form.controls.values.touched" class="text-danger">Numbers Only</p>
+  </div> 
+
+  <div class="col-sm">
+    <label>Input total</label>
+    <input id="total" type="text" formControlName="total" pattern="[0-9]*">
+    <p *ngIf="!form.controls.total.valid && form.controls.total.touched" class="text-danger">Numbers Only</p>
+  </div>
+
+  <div class="col-sm">
+    <label>Optional: Input username</label>
+    <input id="user" type="text" formControlName="user">
+  </div>  
+</div>
+<div class="row" style="padding: 200px;">
+<button class="button" type="submit">Submit</button>
+</div>
+</form>
+<div>
+  <span>
+    <p>result = {{ response }}</p>
+  </span>
+</div>
+</div>
