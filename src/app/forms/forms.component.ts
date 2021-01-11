@@ -13,7 +13,7 @@ export class FormsComponent implements OnInit {
   form: FormGroup;  
   response: any;
 
-  url = 'http://httpbin.org/post'
+  url = 'soething'
 
   constructor( private formBuilder: FormBuilder, private http: HttpClient, private detector: ChangeDetectorRef) { 
 
@@ -44,12 +44,8 @@ export class FormsComponent implements OnInit {
     object = {
       user: incomingData.user,
       total: parseInt(incomingData.total),
-      values: incomingData.values.trim().split('\n').map(Number)
+      values: incomingData.values.trim().split(/[,\n]/).map(Number)
     }
-    
-    let requestData = JSON.stringify(object);
-
-    //console.warn(requestData);
 
     this.postData(<JSON>object);
   }
@@ -61,7 +57,7 @@ export class FormsComponent implements OnInit {
 
       this.response = data.data;
       this.detector.markForCheck();
-      console.warn(typeof(data))
+      console.warn(JSON.stringify(data))
     });
 
   }

@@ -1,1 +1,16 @@
-<p> {{ history }} </p>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div class="container-fluid">
+<div class="panel-group" stlye="padding-top: 100px">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <button class="badge" (click)="requestHistory()">Request History</button>
+        </div>
+        <div class="panel-content">
+            <p style="padding: 20px"> {{ history }} </p>
+        </div>
+    </div>
+</div>
+</div>

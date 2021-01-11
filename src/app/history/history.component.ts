@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-result',
@@ -7,11 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient, private detector: ChangeDetectorRef) { }
+
+  url = 'http://35.241.236.231/api/v1/history'
 
   history: any;
 
   ngOnInit(): void {
+  }
+
+  requestHistory() {
+    this.http.get(this.url).toPromise().then((data) => {
+      console.warn(data);
+      this.history = JSON.stringify(data);
+      this.detector.markForCheck();
+    })
+
   }
 
 }

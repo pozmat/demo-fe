@@ -1,30 +1,39 @@
-<div style="padding: 50px">
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-<div class="row">
-  <div class="col-sm">
-    <label>Input values</label>
-    <textarea id="values" rows="10" cols="20" formControlName="values"></textarea>
-    <p *ngIf="!form.controls.values.valid && form.controls.values.touched" class="text-danger">Numbers Only</p>
-  </div> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-  <div class="col-sm">
-    <label>Input total</label>
-    <input id="total" type="text" formControlName="total" pattern="[0-9]*">
-    <p *ngIf="!form.controls.total.valid && form.controls.total.touched" class="text-danger">Numbers Only</p>
+<div class="container-fluid">
+  <div style="padding: 50px">
+    <div class="panel-group">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label class="col-sm-9 control-label">Values:</label>
+        <textarea class="form-control" id="values" rows="10" cols="20" formControlName="values"></textarea>
+        <p *ngIf="!form.controls.values.valid && form.controls.values.touched" class="text-danger">Numbers Only</p>
+      </div> 
+
+      <div class="form-group">
+        <label class="col-sm-9 control-label">Total:</label>
+        <input class="form-control" id="total" type="text" formControlName="total" pattern="[0-9]*">
+        <p *ngIf="!form.controls.total.valid && form.controls.total.touched" class="text-danger">Numbers Only</p>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-9 control-label">Username (optional):</label>
+        <input class="form-control" id="user" type="text" formControlName="user">
+      </div>  
+      <div class="row" style="padding: 16px">
+        <button class="btn btn-primary btn-md btn-block" type="submit">Submit</button>
+      </div>
+    </form>
   </div>
-
-  <div class="col-sm">
-    <label>Optional: Input username</label>
-    <input id="user" type="text" formControlName="user">
-  </div>  
-</div>
-<div class="row" style="padding: 200px;">
-<button class="button" type="submit">Submit</button>
-</div>
-</form>
-<div>
-  <span>
-    <p>result = {{ response }}</p>
-  </span>
-</div>
+    <div class="panel-group">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Calculated result:</div>
+          <div class="panel-content">
+              <p style="padding: 20px"> {{ response }} </p>
+          </div>
+      </div>
+  </div>
+  </div>
 </div>
