@@ -7,32 +7,19 @@ spec:
   selector:
     matchLabels:
       app: angular
+      tier: frontend
   template:
     metadata:
       labels:
-        app : angular  
+        app : angular
+        tier: frontend
     spec:
       containers:
         - name: angular
           image: mpozega/angular
           imagePullPolicy: Always
           ports:
-          - containerPort: 8001
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    service: angular 
-  name: angular
-spec:
-  type: ClusterIP
-  ports:
-  - name: angular
-    port: 8001
-    protocol: TCP
-  selector:
-    app: angular
+          - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
@@ -44,7 +31,8 @@ spec:
   type: LoadBalancer
   ports:
   - name: angular
-    port: 8001
+    port: 80
     protocol: TCP
   selector:
     app: angular
+    tier: frontend

@@ -11,7 +11,7 @@ export class HistoryComponent implements OnInit {
 
   constructor(private http: HttpClient, private detector: ChangeDetectorRef) { }
 
-  url = 'http://35.241.236.231/api/v1/history'
+  url = 'http://35.241.236.231:8080/api/v1/history'
 
   history: any;
 
@@ -19,6 +19,7 @@ export class HistoryComponent implements OnInit {
   }
 
   requestHistory() {
+    console.log('sent a GET')
     this.http.get(this.url).toPromise().then((data) => {
       console.warn(data);
       this.history = JSON.stringify(data);

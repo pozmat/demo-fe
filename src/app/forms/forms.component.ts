@@ -13,7 +13,7 @@ export class FormsComponent implements OnInit {
   form: FormGroup;  
   response: any;
 
-  url = 'soething'
+  url = 'http://35.241.236.231:8080/api/v1/calculation'
 
   constructor( private formBuilder: FormBuilder, private http: HttpClient, private detector: ChangeDetectorRef) { 
 
@@ -51,7 +51,7 @@ export class FormsComponent implements OnInit {
   }
 
   postData(requestJson: JSON){
-
+    console.log('sent a POST')
     this.http.post(this.url, requestJson).toPromise().then((data: any) => {
       console.warn(data);
 

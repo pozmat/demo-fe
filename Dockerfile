@@ -2,8 +2,8 @@ FROM node:latest as node
 WORKDIR /app
 COPY . .
 RUN npm install
-RUN npm build
+RUN npm run build
 
-FROM nginx:alpine
+FROM nginx:latest
 COPY --from=node /app/dist/demo-fe /usr/share/nginx/html
-COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx-custom.conf /etc/nginx/conf/default.conf
